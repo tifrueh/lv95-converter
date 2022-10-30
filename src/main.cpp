@@ -1,5 +1,5 @@
 #include <iostream>
-#include "headers/coord-conv.h"
+#include "../headers/coord-conv.h"
 
 int main() {
 	lv95 input;
