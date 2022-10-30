@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# Make
+lv95-to-wgs84
