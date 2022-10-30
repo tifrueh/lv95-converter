@@ -16,7 +16,7 @@ wgs84 lv95ToWgs84(const lv95& input_coord) {
 		- 0.270978 * pow(y_prime, 2)
 		- 0.002528 * pow(x_prime, 2)
 		- 0.0447 * pow(y_prime, 2) * x_prime
-		- 0.0140 * x_prime * 3;
+		- 0.0140 * pow(x_prime, 3);
 
 	double lambda = lambda_prime * 100 / 36;
 	double phi = phi_prime * 100 / 36;
