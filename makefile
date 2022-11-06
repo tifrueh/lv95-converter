@@ -12,11 +12,14 @@ clean :
 	rm main.o coord-conv.o
 
 install : lv95-converter
-	sudo mv lv95-converter /usr/local/bin
+	@sudo mv lv95-converter /usr/local/bin
 
 install-local : lv95-converter
 	@mkdir -p $(HOME)/.local/bin
-	mv lv95-converter $(HOME)/.local/bin
+	@mv lv95-converter $(HOME)/.local/bin
 
-uninstall:
-	@if [ -f /usr/local/bin/lv95-converter ]; then sudo rm /usr/local/bin/lv95-converter; elif [ -f $(HOME)/.local/bin/lv95-converter ]; then rm $(HOME)/.local/bin/lv95-converter; else echo "ERROR: lv95-converter is not installed ..."; fi
+uninstall :
+	@if [ -f /usr/local/bin/lv95-converter ]; then sudo rm /usr/local/bin/lv95-converter; elif [ -f $(HOME)/.local/bin/lv95-converter ]; then echo "ERROR: lv95-converter is installed locally. try \"make uninstall-local\" ..."; else echo "ERROR: lv95-converter is not installed ..."; fi
+
+uninstall-local :
+	@if [ -f /usr/local/bin/lv95-converter ]; then echo "ERROR: lv95-converter is installed globally. try \"make uninstall\" ..."; elif [ -f $(HOME)/.local/bin/lv95-converter ]; then rm $(HOME)/.local/bin/lv95-converter; else echo "ERROR: lv95-converter is not installed ..."; fi
