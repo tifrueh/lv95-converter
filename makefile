@@ -1,5 +1,5 @@
-lv95-to-wgs84 : main.o coord-conv.o
-	c++ -o lv95-to-wgs84 main.o coord-conv.o
+lv95-converter : main.o coord-conv.o
+	c++ -o lv95-converter main.o coord-conv.o
 
 main.o : src/main.cpp headers/coord-conv.h
 	c++ -c src/main.cpp
