@@ -29,8 +29,8 @@ wgs84 lv95ToWgs84(const lv95& input_coord) {
 }
 
 lv95 wgs84ToLv95(const wgs84& input_coord) {
-	double phi = input_coord.e * 3600;
-	double lambda = input_coord.n * 3600;
+	double lambda = input_coord.e * 3600;
+	double phi = input_coord.n * 3600;
 
 	double phi_prime = (phi - 169028.66) / 10000;
 	double lambda_prime = (lambda - 26782.5) / 10000;
