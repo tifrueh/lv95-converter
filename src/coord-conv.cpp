@@ -42,7 +42,7 @@ coord::wgs84 coord::lv95ToWgs84(const coord::lv95& input_coord) {
 
 coord::lv95 coord::wgs84ToLv95(const coord::wgs84& input_coord) {
 
-	// convert the ellipsoidal latitudes φ and longitudes λ into arcseconds ["]
+	// convert the ellipsoidal latitudes phi and longitudes lambda into arcseconds ["]
 	double lambda = input_coord.e * 3600;
 	double phi = input_coord.n * 3600;
 
