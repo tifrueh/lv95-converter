@@ -31,8 +31,8 @@ int main(int argc, char** argv) {
 	
 	// add required CLI options -e and -n for lv95
 	coord::lv95 lv95_input;
-	lv95_scmd->add_option<double>("-e,--east", lv95_input.e, "Easting coordinate (LV95)")->required();
-	lv95_scmd->add_option<double>("-n,--north", lv95_input.n, "Northing coordinate (LV95)")->required();
+	lv95_scmd->add_option<double>("-e,--east", lv95_input.e, "Easting coordinate in LV95")->required();
+	lv95_scmd->add_option<double>("-n,--north", lv95_input.n, "Northing coordinate in LV95")->required();
 
 	// add required CLI options -e and -n for wgs84
 	coord::wgs84 wgs84_input;
