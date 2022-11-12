@@ -30,7 +30,7 @@ To convert WGS84 to LV95 pass the `wgs84` subcommand to the program and use the 
 ❯ lv95-converter --help
 
 Convert LV95 coordinates to WGS84 and vice-versa
-Usage: ./lv95-converter [OPTIONS] SUBCOMMAND
+Usage: lv95-converter [OPTIONS] SUBCOMMAND
 
 Options:
   -h,--help                   Print this help message and exit
@@ -44,7 +44,7 @@ Subcommands:
 ❯ lv95-converter lv95 --help
 
 convert LV95 to WGS84
-Usage: ./lv95-converter lv95 [OPTIONS]
+Usage: lv95-converter lv95 [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
@@ -56,7 +56,7 @@ Options:
 ❯ lv95-converter wgs84 --help
 
 convert WGS84 to LV95
-Usage: ./lv95-converter wgs84 [OPTIONS]
+Usage: lv95-converter wgs84 [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
