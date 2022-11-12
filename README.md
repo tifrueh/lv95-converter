@@ -1,6 +1,6 @@
 # LV95-converter
 
-`lv95-converter` is a command line tool used to convert Swiss LV95 coordinates to WGS84 and vice-versa. The formulas used are the ones provided by [Swisstopo](https://www.swisstopo.admin.ch/en/home.html) as described in their document [Formulas and constants for the calculation of the Swiss conformal cylindrical projection and for the transformation between coordinate systems](https://www.swisstopo.admin.ch/content/swisstopo-internet/en/online/calculation-services/_jcr_content/contentPar/tabs/items/documents_publicatio/tabPar/downloadlist/downloadItems/20_1467104436749.download/refsys_e.pdf). To parse the commandline arguments [CLI11](https://github.com/CLIUtils/CLI11) by [CLIUtils](https://github.com/CLIUtils) was used.
+`lv95-converter` is a command line tool used to convert Swiss LV95 coordinates to WGS84 and vice-versa. The formulas used are the ones provided by [Swisstopo](https://www.swisstopo.admin.ch/en/home.html) as described in their document [Formulas and constants for the calculation of the Swiss conformal cylindrical projection and for the transformation between coordinate systems](https://www.swisstopo.admin.ch/content/swisstopo-internet/en/online/calculation-services/_jcr_content/contentPar/tabs/items/documents_publicatio/tabPar/downloadlist/downloadItems/20_1467104436749.download/refsys_e.pdf). To parse the command-line arguments [CLI11](https://github.com/CLIUtils/CLI11) by [CLIUtils](https://github.com/CLIUtils) was used.
 
 ## Installation
 
@@ -8,7 +8,7 @@ To install `lv95-converter` you can either build it from source or download a bi
 
 ### Building from source
 
-1. Download latest tarball and extract it.
+1. Download the latest tarball and extract it.
 2. Execute `make` from inside the source directory. <br> 
    The build process can be influenced using the following environment variables: <br>
    `CXX`: the c++ compiler to be used <br>
