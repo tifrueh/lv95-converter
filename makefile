@@ -1,11 +1,11 @@
 lv95-converter : main.o coord-conv.o
-	c++ -o lv95-converter main.o coord-conv.o
+	c++ -std=c++11 -o lv95-converter main.o coord-conv.o
 
 main.o : src/main.cpp headers/coord-conv.h
-	c++ -c src/main.cpp
+	c++ -std=c++11 -c src/main.cpp
 
 coord-conv.o : src/coord-conv.cpp headers/coord-conv.h
-	c++ -c src/coord-conv.cpp
+	c++ -std=c++11 -c src/coord-conv.cpp
 	
 
 clean : 
