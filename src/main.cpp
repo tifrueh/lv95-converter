@@ -22,7 +22,7 @@
 int main(int argc, char** argv) {
 
 	// initialise CLI11 parser
-	CLI::App app("Convert LV95 coordinates to WGS84 and vice-versa");
+	CLI::App app{"Convert LV95 coordinates to WGS84 and vice-versa"};
 
 	// add required ubcommands lv95 and wgs84
 	CLI::App* lv95_scmd = app.add_subcommand("lv95", "convert LV95 to WGS84");
