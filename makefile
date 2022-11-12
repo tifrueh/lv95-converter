@@ -15,7 +15,7 @@ install : lv95-converter
 	@sudo mv lv95-converter /usr/local/bin
 
 install-local : lv95-converter
-	@mkdir -p $(HOME)/.local/bin
+	@if ! [ -d $(HOME)/.local/bin ]; then mkdir $(HOME)/.local/bin; fi
 	@mv lv95-converter $(HOME)/.local/bin
 
 uninstall :
