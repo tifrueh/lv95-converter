@@ -1,5 +1,5 @@
 #include <math.h>
-#include "../headers/coord-conv.h"
+#include "coord-conv.hpp"
 
 coord::wgs84 coord::lv95ToWgs84(const coord::lv95& input_coord) {
 	double y_prime = (input_coord.e - 2600000.0) / 1000000.0;

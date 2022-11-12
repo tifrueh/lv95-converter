@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../lib/CLI11.hpp"
-#include "../headers/coord-conv.h"
+#include "CLI11.hpp"
+#include "coord-conv.hpp"
 
 int main(int argc, char** argv) {
 	CLI::App app("Convert LV95 coordinates to WGS84 and vice-versa");
