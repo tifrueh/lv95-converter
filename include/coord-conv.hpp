@@ -1,3 +1,7 @@
+// Copyright (C) 2022  Timo Früh
+// Full copyright notice in main.cpp
+
+
 #ifndef COORD_CONV
 #define COORD_CONV
 
