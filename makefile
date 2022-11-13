@@ -31,7 +31,8 @@ distclean :
 	rm $(TARGET)
 
 install : $(TARGET)
-	@cp $(TARGET) $(INSTALLDIR)
+	@install -d $(INSTALLDIR)
+	@install $(TARGET) $(INSTALLDIR)
 
 uninstall :
 	@if [ -f $(INSTALLDIR)/$(TARGET) ]; then rm $(INSTALLDIR)/$(TARGET); else echo "ERROR: $(TARGET) not installed at location: \"$(INSTALLDIR)\" --> please uninstall manually"; fi
