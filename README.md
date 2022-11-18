@@ -15,7 +15,7 @@ To install `lv95-converter` you can either build it from source or download a bi
    `CPPFLAGS`: preprocessor options <br>
    `CXXFLAGS`: compiler options <br>
    `LDFLAGS`: linker options
-3. Execute `make install` to install the binary built during the previous step. The install location can be changed by setting the environment variable `INSTALLDIR`.
+3. Execute `make install` to install the binary built during the previous step. The install location can be changed by setting the environment variable `DESTDIR`.
 
 
 ## Usage
