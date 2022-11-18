@@ -15,6 +15,8 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
+#define VERSION "dev"
+
 #include <iostream>
 #include "CLI11.hpp"
 #include "coord-conv.hpp"
@@ -23,6 +25,8 @@ int main(int argc, char** argv) {
 
 	// initialise CLI11 parser
 	CLI::App app{"Convert LV95 coordinates to WGS84 and vice-versa"};
+
+	app.set_version_flag("-v,--version", VERSION, "Print version and exit");
 
 	// add required ubcommands lv95 and wgs84
 	CLI::App* lv95_scmd = app.add_subcommand("lv95", "convert LV95 to WGS84");
