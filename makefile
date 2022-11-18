@@ -6,7 +6,8 @@ CPPFLAGS ?= -I./include
 CXXFLAGS ?= -g -std=c++11
 LDFLAGS ?= -g
 
-INSTALLDIR ?= /usr/local/bin
+DESTDIR ?= /usr/local
+DESTDIR_BIN ?= $(DESTDIR)/bin
 
 TARGET = lv95-converter
 
@@ -31,8 +32,9 @@ distclean :
 	rm $(TARGET)
 
 install : $(TARGET)
-	@install -d $(INSTALLDIR)
-	@install $(TARGET) $(INSTALLDIR)
+	@install -d $(DESTDIR_BIN)
+	@install $(TARGET) $(DESTDIR_BIN)
+	@echo "$(TARGET) was installed to $(DESTDIR)"
 
 uninstall :
-	@if [ -f $(INSTALLDIR)/$(TARGET) ]; then rm $(INSTALLDIR)/$(TARGET); else echo "ERROR: $(TARGET) not installed at location: \"$(INSTALLDIR)\" --> please uninstall manually"; fi
+	@if [ -f $(DESTDIR_BIN)/$(TARGET) ]; then rm $(DESTDIR_BIN)/$(TARGET); else echo "ERROR: $(TARGET) not installed at location: \"$(DESTDIR_BIN)\" --> please uninstall manually"; fi
