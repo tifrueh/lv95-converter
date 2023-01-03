@@ -18,7 +18,7 @@
 #define VERSION "1.0.3-dev"
 
 #include <iostream>
-#include "CLI11.hpp"
+#include <CLI/CLI.hpp>
 #include "coord-conv.hpp"
 
 int main(int argc, char** argv) {
