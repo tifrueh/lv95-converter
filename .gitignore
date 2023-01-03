@@ -31,8 +31,9 @@
 *.out
 *.app
 
-# Make
-lv95-converter
+# build directory
+build/*
+!build/.gitignore
 
 # code
 .vscode
