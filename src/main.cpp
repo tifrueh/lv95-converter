@@ -15,10 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#define VERSION "1.0.2"
+#define VERSION "1.0.3"
 
 #include <iostream>
-#include "CLI11.hpp"
+#include <CLI/CLI.hpp>
 #include "coord-conv.hpp"
 
 int main(int argc, char** argv) {

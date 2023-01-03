@@ -4,18 +4,17 @@
 
 ## Installation
 
-To install `lv95-converter` you can either build it from source or download a binary from the latest release.
+To install `lv95-converter` you can either build it from source or download a package from the latest release.
 
 ### Building from source
 
+Install dependency:
+
+- [cli11](https://github.com/CLIUtils/CLI11)
+
 1. Download the latest tarball and extract it.
-2. Execute `make` from inside the source directory. <br> 
-   The build process can be influenced using the following environment variables: <br>
-   `CXX`: the c++ compiler to be used <br>
-   `CPPFLAGS`: preprocessor options <br>
-   `CXXFLAGS`: compiler options <br>
-   `LDFLAGS`: linker options
-3. Execute `make install` to install the binary built during the previous step. The install location can be changed by setting the environment variable `DESTDIR`.
+2. Execute `make` from inside the source directory.
+3. Execute `make install` to install the binary built during the previous step..
 
 
 ## Usage
