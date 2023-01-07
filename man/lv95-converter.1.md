@@ -1,4 +1,4 @@
-% LV95-CONVERTER(1) lv95-converter 1.0.4-dev
+% LV95-CONVERTER(1) lv95-converter 1.0.4
 % Timo Früh
 % January 2023
 
