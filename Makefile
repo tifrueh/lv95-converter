@@ -56,11 +56,8 @@ install : all
 	@mkdir -p $(DEST_MAN1DIR)
 	@cp $(LOCAL_MAN1_PATH) $(DEST_MAN1DIR)
 	@gzip $(DEST_MAN1DIR)/$(LOCAL_MAN1)
-	@mandb -q
-	@echo "manpage installed at $(DEST_MAN1DIR)"
 	@cp $(LOCAL_BIN_PATH) $(DEST_BINDIR)
-	@echo "$(LOCAL_BIN) was installed to $(DEST_BINDIR)"
 
 uninstall :
 	@if [ -f $(DEST_BIN_PATH) ]; then rm $(DEST_BIN_PATH) && echo "$(DEST_BIN_PATH) was deleted"; else echo "ERROR: $(LOCAL_BIN) not installed at location: \"$(DEST_BIN_PATH)\" --> please uninstall manually"; fi
-	@if [ -f $(DEST_MAN1_PATH) ]; then rm $(DEST_MAN1_PATH) && mandb -q && echo "$(DEST_MAN1_PATH) was deleted"; else echo "ERROR: $(LOCAL_MAN1) not installed at location: \"$(DEST_MAN1_PATH)\" --> please uninstall manually"; fi
+	@if [ -f $(DEST_MAN1_PATH) ]; then rm $(DEST_MAN1_PATH) && echo "$(DEST_MAN1_PATH) was deleted"; else echo "ERROR: $(LOCAL_MAN1) not installed at location: \"$(DEST_MAN1_PATH)\" --> please uninstall manually"; fi
