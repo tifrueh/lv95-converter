@@ -1,7 +1,7 @@
 project(
     'lv95-converter',
     'cpp',
-    version: 'v1.0.5',
+    version: 'v1.1.0',
     license: 'GPL-3.0-or-later',
     default_options: [ 'cpp_std=c++11' ]
 )
