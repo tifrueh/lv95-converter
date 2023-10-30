@@ -13,8 +13,9 @@ Install dependency:
 - [cli11](https://github.com/CLIUtils/CLI11)
 
 1. Download the latest tarball and extract it.
-2. Execute `make` from inside the source directory.
-3. Execute `make install` to install the binary built during the previous step..
+2. Execute `meson setup build` from inside the source directory to setup the project.
+3. Execute `meson compile -C build` from inside the source directory to build the executable.
+4. Execute `meson install -C build` from inside the source directory to install the executable and the manpage.
 
 
 ## Usage
@@ -26,7 +27,7 @@ To convert WGS84 to LV95 pass the `wgs84` subcommand to the program and use the 
 ### Help pages
 
 ~~~ text
-❯ lv95-converter --help
+$ lv95-converter --help
 
 Convert LV95 coordinates to WGS84 and vice-versa
 Usage: lv95-converter [OPTIONS] SUBCOMMAND
@@ -40,7 +41,7 @@ Subcommands:
 ~~~
 
 ~~~ text
-❯ lv95-converter lv95 --help
+$ lv95-converter lv95 --help
 
 convert LV95 to WGS84
 Usage: lv95-converter lv95 [OPTIONS]
@@ -52,7 +53,7 @@ Options:
 ~~~
 
 ~~~ text
-❯ lv95-converter wgs84 --help
+$ lv95-converter wgs84 --help
 
 convert WGS84 to LV95
 Usage: lv95-converter wgs84 [OPTIONS]
