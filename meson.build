@@ -6,7 +6,7 @@ project(
     default_options: [ 'cpp_std=c++11' ]
 )
 
-cli11 = dependency('cli11')
+cli11 = dependency('CLI11')
 deps = [ cli11 ]
 
 incdirs = include_directories('include')
