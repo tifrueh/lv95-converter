@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#define VERSION "v1.1.0"
+#define VERSION "v1.1.1"
 
 #include <iostream>
 #include <CLI/CLI.hpp>
