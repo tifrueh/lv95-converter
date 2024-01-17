@@ -1,4 +1,4 @@
-// Copyright (C) 2022  Timo Früh
+// Copyright (C) 2022-2024 Timo Früh
 // Full copyright notice in main.cpp
 
 
