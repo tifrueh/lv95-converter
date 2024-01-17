@@ -1,0 +1,107 @@
+.TH lv95-converter 1 2024-01-17 @vversion@
+.SH NAME
+lv95-converter - Convert LV95 coordinates to WGS84 and vice-versa
+.SH SYNOPSIS
+.SY lv95-converter
+.RB [ lv95\~ |\~ wgs84 ]
+.RB [ \-\-east=\c
+.IR easting-coordinate ]
+.RB [ \-\-west=\c
+.IR westing-coordinate ]
+.YS
+.
+.
+.SY lv95-converter
+.RB [ lv95\~ |\~ wgs84 ]
+.RB [ \-h ,\~ \-\-help ]
+.YS
+.
+.
+.SY lv95-converter
+.B \-h
+.
+.SY lv95-converter
+.B \-\-help
+.YS
+.
+.
+.SY lv95-converter
+.B \-v
+.
+.SY lv95-converter
+.B \-\-version
+.YS
+.SH DESCRIPTION
+.B lv95-converter
+calculates Swiss LV95 coordinates from WGS84 coordinates or the other way
+around. The specified subcommand decides, in which direction the calculation is
+to be done. Be wary while converting WGS84 to LV95, however, as the results
+will be meaningless if the WGS84 coordinates are not located within
+Switzerland.
+.SH OPTIONS
+.TP
+.BR \-h ,\~ \-\-help
+Displays a help message
+.TP
+.BR \-v ,\~ \-\-version
+Displays version information
+.SS Subcommands
+.TP
+.B lv95
+Convert LV95 to WGS84
+.TP
+.B wgs94
+Convert WGS84 to LV95
+.SS Subcommand options
+.TP
+.BR \-h ,\~ \-\-help
+Display a help message (about the subcommand)
+.TP
+.BR \-e ,\~ \-\-east=\c
+.I easting-coordinate
+The easting coordinate in the format corresponding to the subcommand
+.TP
+.BR \-n .\~ \-\-north=\c
+.I northing-coordinate
+The northing coordinate in the format corresponding to the subcommand
+.SH EXAMPLES
+.TP
+.EX
+lv95-converter -h
+.EE
+Displays the help message
+.TP
+.EX
+lv95-converter lv95 -h
+.EE
+Displays the help message for the lv95 subcommand
+.TP
+.EX
+lv95-converter lv95 -e 2600000 -n 1200000
+.EE
+Converts the LV95 coordinates 2600000 1200000 to WGS84
+.SH BUGS
+I should think so.
+.LP
+Please refer to
+.UR https://\:github\:.com/\:tifrueh/\:lv95-converter/\:issues/
+.UE .
+.SH COPYRIGHT
+Copyright (C) 2022-2024  Timo Früh
+.LP
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+.LP
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+.LP
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see
+.UR https://\:www\:.gnu\:.org/\:licenses/
+.UE .
+.SH AUTHORS
+Timo Früh

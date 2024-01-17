@@ -1,5 +1,5 @@
 // Convert LV95 coordinates to WGS84 and vice-versa
-// Copyright (C) 2022  Timo Früh
+// Copyright (C) 2022-2024 Timo Früh
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,11 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
-#define VERSION "v1.1.1"
-
 #include <iostream>
 #include <CLI/CLI.hpp>
+#include "config.hpp"
 #include "coord-conv.hpp"
 
 int main(int argc, char** argv) {
@@ -26,7 +24,7 @@ int main(int argc, char** argv) {
 	// initialise CLI11 parser
 	CLI::App app{"Convert LV95 coordinates to WGS84 and vice-versa"};
 
-	app.set_version_flag("-v,--version", VERSION, "Print version and exit");
+	app.set_version_flag("-v,--version", VVERSION_STR, "Print version and exit");
 
 	// add required ubcommands lv95 and wgs84
 	CLI::App* lv95_scmd = app.add_subcommand("lv95", "convert LV95 to WGS84");

@@ -1,5 +1,5 @@
-// Copyright (C) 2022  Timo Früh
-// Full copyright notice in main.cpp
+// Copyright (C) 2022-2024 Timo Früh
+// Full copyright notice in ../src/main.cpp
 
 
 #ifndef COORD_CONV
