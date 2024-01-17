@@ -1,0 +1,4 @@
+// Copyright (C) 2022-2024  Timo Früh
+// Full copyright notice in main.cpp
+
+#define VVERSION_STR "@vversion@"
