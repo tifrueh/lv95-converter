@@ -28,4 +28,5 @@ executable(
     install: true
 )
 
-install_man('man/lv95-converter.1')
+manpage = join_paths(meson.current_build_dir(), 'configuration-files/lv95-converter.1')
+install_man(manpage)
