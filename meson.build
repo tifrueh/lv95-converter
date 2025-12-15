@@ -20,33 +20,7 @@ conf_data = configuration_data()
 conf_data.set('version', tag.substring(1))
 conf_data.set('vversion', tag)
 
-cli11 = dependency('CLI11')
-deps = [ cli11 ]
-
-incdirs = include_directories('include')
-
-src = []
-
 subdir('Documentation')
 subdir('include')
 subdir('src')
-
-executable(
-    'lv95-converter',
-    src,
-    dependencies: deps,
-    include_directories: incdirs,
-    install: true
-)
-
-test_coord_conv = executable(
-  'test-coord-conv',
-  [ 'src/coord-conv.cpp', 'test/coord-conv.cpp' ],
-  include_directories: incdirs,
-  install: false
-)
-
-test('coord-conv', test_coord_conv)
-
-manpage = join_paths(meson.current_build_dir(), 'Documentation/lv95-converter.1')
-install_man(manpage)
+subdir('test')
