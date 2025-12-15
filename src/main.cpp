@@ -34,8 +34,8 @@ int main(int argc, char** argv) {
     app.add_flag("-m,--mro", mro, "Produce machine readable output");
 
     // Add required ubcommands lv95 and wgs84.
-    CLI::App* lv95_scmd = app.add_subcommand("lv95", "convert LV95 to WGS84");
-    CLI::App* wgs84_scmd = app.add_subcommand("wgs84", "convert WGS84 to LV95");
+    CLI::App* lv95_scmd = app.add_subcommand("lv95", "Convert LV95 to WGS84");
+    CLI::App* wgs84_scmd = app.add_subcommand("wgs84", "Convert WGS84 to LV95");
     app.require_subcommand(1, 1);
 
     // Add required CLI options -e and -n for lv95.
