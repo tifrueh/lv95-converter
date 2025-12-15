@@ -1,65 +1,59 @@
-# LV95-converter
+# LV95 Converter
 
-`lv95-converter` is a command line tool used to convert Swiss LV95 coordinates to WGS84 and vice-versa. The formulas used are the ones provided by [Swisstopo](https://www.swisstopo.admin.ch/en/home.html) as described in their document [Formulas and constants for the calculation of the Swiss conformal cylindrical projection and for the transformation between coordinate systems](https://www.swisstopo.admin.ch/content/swisstopo-internet/en/online/calculation-services/_jcr_content/contentPar/tabs/items/documents_publicatio/tabPar/downloadlist/downloadItems/20_1467104436749.download/refsys_e.pdf). To parse the command-line arguments [CLI11](https://github.com/CLIUtils/CLI11) by [CLIUtils](https://github.com/CLIUtils) was used.
+`lv95-converter` is a command line tool used to convert Swiss LV95 coordinates
+to WGS84 and vice versa. The formulas used are the ones provided by
+[Swisstopo](https://www.swisstopo.admin.ch/en/home.html) as described in their
+document [Formulas and constants for the calculation of the Swiss conformal
+cylindrical projection and for the transformation between coordinate
+systems](https://www.swisstopo.admin.ch/dam/en/sd-web/c46Fz-MHIc3u/refsys-EN.pdf).
 
 ## Installation
 
-To install `lv95-converter` you can either build it from source or download a package from the latest release.
+### macOS (Homebrew)
 
-### Building from source
+1. Add my tap:
 
-Install dependency:
+```console
+$ brew tap tifrueh/mytap
+```
 
-- [cli11](https://github.com/CLIUtils/CLI11)
+2. Install `lv95-converter`:
+
+```console
+$ brew tap tifrueh/mytap
+```
+
+### Arch Linux (PKGBUILD)
+
+You can find a PKGBUILD file in [my PKGBUILD
+repository](https://github.com/tifrueh/PKGBUILDs/tree/main/lv95-converter).
+Download it or clone the repository and then use `makepkg` and `pacman` to
+install the package as you would an ordinary AUR package.
+
+### Building from Source
+
+0. Install dependency [cli11](https://github.com/CLIUtils/CLI11).
 
 1. Download the latest tarball and extract it.
-2. Execute `meson setup build` from inside the source directory to setup the project.
-3. Execute `meson compile -C build` from inside the source directory to build the executable.
-4. Execute `meson install -C build` from inside the source directory to install the executable and the manpage.
 
+2. Execute `meson setup build` from inside the source directory to setup the
+   project.
 
-## Usage
+3. Execute `meson compile -C build` from inside the source directory to build
+   the executable.
 
-To convert LV95 to WGS84 pass the `lv95` subcommand to the program and use the `-e` and the `-n` flag respectively to input LV95 coordinates.
+4. Execute `meson install -C build` from inside the source directory to install
+   the executable and the manpage.
 
-To convert WGS84 to LV95 pass the `wgs84` subcommand to the program and use the `-n` and the `-e` flag respectively to input WGS84 coordinates.
+## Additional Information
 
-### Help pages
+Please refer to the manual pages for any additional information on the program.
 
-~~~ text
-$ lv95-converter --help
+If you want to view the manual pages without installing them, clone the
+repository and navigate your terminal to it. You can then use man to display any
+manual page contained in the Documentation directory of this repository. This
+could be done, for example, like so:
 
-Convert LV95 coordinates to WGS84 and vice-versa
-Usage: lv95-converter [OPTIONS] SUBCOMMAND
-
-Options:
-  -h,--help                   Print this help message and exit
-
-Subcommands:
-  lv95                        convert LV95 to WGS84
-  wgs84                       convert WGS84 to LV95
-~~~
-
-~~~ text
-$ lv95-converter lv95 --help
-
-convert LV95 to WGS84
-Usage: lv95-converter lv95 [OPTIONS]
-
-Options:
-  -h,--help                   Print this help message and exit
-  -e,--east FLOAT REQUIRED    Easting coordinate (LV95)
-  -n,--north FLOAT REQUIRED   Northing coordinate (LV95)
-~~~
-
-~~~ text
-$ lv95-converter wgs84 --help
-
-convert WGS84 to LV95
-Usage: lv95-converter wgs84 [OPTIONS]
-
-Options:
-  -h,--help                   Print this help message and exit
-  -e,--east FLOAT REQUIRED    Easting coordinate in WGS84
-  -n,--north FLOAT REQUIRED   Northing coordinate in WGS84
-~~~
+```console
+$ man ./Documentation/lv95-converter.1
+```
