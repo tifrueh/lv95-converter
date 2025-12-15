@@ -4,8 +4,6 @@
  *
  */
 
-
-#include <math.h>
 #include "coord-conv.hpp"
 
 // Function to convert lv95 to wgs84.
@@ -20,12 +18,12 @@ coord::wgs84 coord::lv95ToWgs84(const coord::lv95& input_coord) {
   // Calculate longitude lambda and latitude phi in the unit [10000"].
   double lambda_prime =
       2.6779094 + 4.728982 * y_prime + 0.791484 * y_prime * x_prime +
-      0.1306 * y_prime * pow(x_prime, 2.0) - 0.0436 * pow(y_prime, 3.0);
+      0.1306 * y_prime * std::pow(x_prime, 2.0) - 0.0436 * std::pow(y_prime, 3.0);
 
   double phi_prime =
-      16.9023892 + 3.238272 * x_prime - 0.270978 * pow(y_prime, 2.0) -
-      0.002528 * pow(x_prime, 2.0) - 0.0447 * pow(y_prime, 2.0) * x_prime -
-      0.0140 * pow(x_prime, 3.0);
+      16.9023892 + 3.238272 * x_prime - 0.270978 * std::pow(y_prime, 2.0) -
+      0.002528 * std::pow(x_prime, 2.0) - 0.0447 * std::pow(y_prime, 2.0) * x_prime -
+      0.0140 * std::pow(x_prime, 3.0);
 
   // Convert longitude and latitude to the unit [°].
   double lambda = lambda_prime * 100.0 / 36.0;
@@ -55,15 +53,15 @@ coord::lv95 coord::wgs84ToLv95(const coord::wgs84& input_coord) {
     double e = 2600072.37
         + 211455.93 * lambda_prime
         - 10938.51 * lambda_prime * phi_prime
-        - 0.36 * lambda_prime * pow(phi_prime, 2)
-        - 44.54 * pow(lambda_prime, 3);
+        - 0.36 * lambda_prime * std::pow(phi_prime, 2)
+        - 44.54 * std::pow(lambda_prime, 3);
 
     double n = 1200147.07
         + 308807.95 * phi_prime
-        + 3745.25 * pow(lambda_prime, 2)
-        + 76.63 * pow(phi_prime, 2)
-        - 194.56 * pow(lambda_prime, 2) * phi_prime
-        + 119.79 * pow(phi_prime, 3);
+        + 3745.25 * std::pow(lambda_prime, 2)
+        + 76.63 * std::pow(phi_prime, 2)
+        - 194.56 * std::pow(lambda_prime, 2) * phi_prime
+        + 119.79 * std::pow(phi_prime, 3);
 
     // Return the result as lv95 coordinates.
     lv95 result;

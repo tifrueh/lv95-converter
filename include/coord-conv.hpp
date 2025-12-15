@@ -8,6 +8,8 @@
 #ifndef COORD_CONV
 #define COORD_CONV
 
+#include <cmath>
+
 namespace coord {
 
     // Define lv95 datatype.
