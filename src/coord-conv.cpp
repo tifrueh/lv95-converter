@@ -87,12 +87,7 @@ static void print_mro(const coordinates& c) {
         break;
     }
 
-    std::cout
-        << "{ "
-        << "\"format\": \"" << fmt << "\", "
-        << "\"e\": " << c.e << ", "
-        << "\"n\": " << c.n
-        << " }\n";
+    std::printf("{ \"format\": \"%s\", \"e\": %f, \"n\": %f }\n", fmt.c_str(), c.e, c.n);
 }
 
 static void print_hro(const coordinates& c) {
@@ -107,7 +102,7 @@ static void print_hro(const coordinates& c) {
         break;
     }
 
-    std::cout << "Coordinates in " << fmt << ": E " << c.e << " N " << c.n << "\n";
+    std::printf("Coordinates in %s: E %f N %f\n", fmt.c_str(), c.e, c.n);
 }
 
 void coord::print(const coordinates& c, bool mro) {
