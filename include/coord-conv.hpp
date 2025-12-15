@@ -9,26 +9,32 @@
 #define COORD_CONV
 
 #include <cmath>
+#include <string>
+#include <iostream>
 
 namespace coord {
 
-    // Define lv95 datatype.
-    struct lv95 {
+    // Define coordinate format enumerator.
+    enum fmt {
+        LV95,
+        WGS84
+    };
+
+    // Define coordinate datatype.
+    struct coordinates {
+        fmt f;
         double e;
         double n;
     };
 
-    // Define wgs84 datatype.
-    struct wgs84 {
-        double e;
-        double n;
-    };
+    // Declare function to convert lv95 to wgs84.
+    coordinates lv95ToWgs84(const coordinates& input_coord);
 
-    // Declare function to convert lv95 to wgs84 for later definition.
-    wgs84 lv95ToWgs84(const lv95& input_coord);
+    // Declare function to convert wgs84 to lv95.
+    coordinates wgs84ToLv95(const coordinates& input_coord);
 
-    // Declare function to convert wgs84 to lv95 for later definition.
-    lv95 wgs84ToLv95(const wgs84& input_coord);
+    // Print coordinates.
+    void print(const coordinates& input_coord, bool mro);
 
 }
 #endif

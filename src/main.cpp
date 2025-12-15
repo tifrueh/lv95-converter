@@ -30,18 +30,24 @@ int main(int argc, char** argv) {
 
     app.set_version_flag("-v,--version", VVERSION_STR, "Print version and exit");
 
+    // Add flags for machine readable output.
+    bool mro = false;
+    app.add_flag("-m,--mro", mro, "Produce machine readable output");
+
     // Add required ubcommands lv95 and wgs84.
     CLI::App* lv95_scmd = app.add_subcommand("lv95", "convert LV95 to WGS84");
     CLI::App* wgs84_scmd = app.add_subcommand("wgs84", "convert WGS84 to LV95");
     app.require_subcommand(1, 1);
 
     // Add required CLI options -e and -n for lv95.
-    coord::lv95 lv95_input;
+    coord::coordinates lv95_input;
+    lv95_input.f = coord::LV95;
     lv95_scmd->add_option<double>("-e,--east", lv95_input.e, "Easting coordinate in LV95")->required();
     lv95_scmd->add_option<double>("-n,--north", lv95_input.n, "Northing coordinate in LV95")->required();
 
     // Add required CLI options -e and -n for wgs84.
-    coord::wgs84 wgs84_input;
+    coord::coordinates wgs84_input;
+    wgs84_input.f = coord::WGS84;
     wgs84_scmd->add_option<double>("-e,--east", wgs84_input.e, "Easting coordinate in WGS84")->required();
     wgs84_scmd->add_option<double>("-n,--north", wgs84_input.n, "Northing coordinate in WGS84")->required();
 
@@ -49,24 +55,16 @@ int main(int argc, char** argv) {
     CLI11_PARSE(app, argc, argv);
 
     // Execute selected subcommand with arguments.
+    coord::coordinates output;
     if (*lv95_scmd) {
-
         // Convert lv95 to wgs84.
-        coord::wgs84 output;
         output = coord::lv95ToWgs84(lv95_input);
-
-        // Print out result.
-        std::cout << "\nCoordinates in WGS84: N " << output.n << ", E " << output.e << "\n";
-
     } else {
-
         // Convert wgs84 to lv95.
-        coord::lv95 output;
         output = coord::wgs84ToLv95(wgs84_input);
-
-        // Print out result.
-        std::cout << "\nCoordinates in LV95: E " << output.e << ", N " << output.n << "\n";
     }
+
+    coord::print(output, mro);
 
     return 0;
 }

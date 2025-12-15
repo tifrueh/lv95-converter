@@ -6,8 +6,10 @@
 
 #include "coord-conv.hpp"
 
+using namespace coord;
+
 // Function to convert lv95 to wgs84.
-coord::wgs84 coord::lv95ToWgs84(const coord::lv95& input_coord) {
+coordinates coord::lv95ToWgs84(const coordinates& input_coord) {
 
   // Convert the projection coordinates E (easting) and N (northing) in LV95
   // (or y / x in LV03) into the civilian system (Bern = 0 / 0) and express in
@@ -30,14 +32,15 @@ coord::wgs84 coord::lv95ToWgs84(const coord::lv95& input_coord) {
   double phi = phi_prime * 100.0 / 36.0;
 
   // Return the result as wgs84 coordinates.
-  wgs84 result;
+  coordinates result;
+  result.f = WGS84;
   result.e = lambda;
   result.n = phi;
 
   return result;
 }
 
-coord::lv95 coord::wgs84ToLv95(const coord::wgs84& input_coord) {
+coordinates coord::wgs84ToLv95(const coordinates& input_coord) {
 
     // Convert the ellipsoidal latitudes phi and longitudes lambda into
     // arcseconds ["].
@@ -64,9 +67,49 @@ coord::lv95 coord::wgs84ToLv95(const coord::wgs84& input_coord) {
         + 119.79 * std::pow(phi_prime, 3);
 
     // Return the result as lv95 coordinates.
-    lv95 result;
+    coordinates result;
+    result.f = LV95;
     result.e = e;
     result.n = n;
 
     return result;
+}
+
+static void print_mro(const coordinates& c) {
+
+    std::string fmt;
+    switch (c.f) {
+    case LV95:
+        fmt = "lv95";
+    case WGS84:
+        fmt = "wgs84";
+    }
+
+    std::cout
+        << "{ "
+        << "\"format\": \"" << fmt << "\", "
+        << "\"e\": " << c.e << ", "
+        << "\"n\": " << c.n
+        << " }\n";
+}
+
+static void print_hro(const coordinates& c) {
+
+    std::string fmt;
+    switch (c.f) {
+    case LV95:
+        fmt = "LV95";
+    case WGS84:
+        fmt = "WGS84";
+    }
+
+    std::cout << "Coordinates in " << fmt << ": E " << c.e << " N " << c.n << "\n";
+}
+
+void coord::print(const coordinates& c, bool mro) {
+    if (mro) {
+        print_mro(c);
+    } else {
+        print_hro(c);
+    }
 }
