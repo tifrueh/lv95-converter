@@ -81,8 +81,10 @@ static void print_mro(const coordinates& c) {
     switch (c.f) {
     case LV95:
         fmt = "lv95";
+        break;
     case WGS84:
         fmt = "wgs84";
+        break;
     }
 
     std::cout
@@ -99,8 +101,10 @@ static void print_hro(const coordinates& c) {
     switch (c.f) {
     case LV95:
         fmt = "LV95";
+        break;
     case WGS84:
         fmt = "WGS84";
+        break;
     }
 
     std::cout << "Coordinates in " << fmt << ": E " << c.e << " N " << c.n << "\n";
