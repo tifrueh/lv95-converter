@@ -18,7 +18,6 @@
  *
  */
 
-#include <iostream>
 #include <CLI/CLI.hpp>
 #include "config.hpp"
 #include "coord-conv.hpp"
