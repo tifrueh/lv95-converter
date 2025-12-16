@@ -1,0 +1,90 @@
+.TH lv95-converter 1 2025-12-15 @vversion@
+.
+.SH NAME
+lv95-converter - convert LV95 coordinates to WGS84 and vice-versa
+.
+.SH SYNOPSIS
+.SY lv95-converter
+.RB [ " -j " ]
+.RB ( " lv95 " | " wgs84 " )
+.BI "\-e " easting
+.BI "\-n " northing
+.YS
+.SY lv95-converter
+.RB [ " lv95 " | " wgs84 " ]
+.B  \-\-help
+.YS
+.SY lv95-converter
+.B \-\-version
+.YS
+.
+.SH DESCRIPTION
+.B lv95-converter
+calculates Swiss LV95 coordinates from WGS84 coordinates or the other way
+around. The specified subcommand decides, in which direction the calculation is
+to be done. Be wary while converting WGS84 to LV95, however, as the results
+will be meaningless if the WGS84 coordinates are not located within
+Switzerland.
+.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Displays a help message.
+.TP
+.BR \-v ", " \-\-version
+Displays version information.
+.TP
+.BR \-j ", " \-\-json
+Display result as JSON.
+.SS Subcommands
+.TP
+.B lv95
+Convert LV95 to WGS84.
+.TP
+.B wgs94
+Convert WGS84 to LV95.
+.SS Subcommand options
+.TP
+.BR \-h ", " \-\-help
+Display a help message
+(if after a subcommand, display a help message about the subcommand).
+.TP
+.BR \-e ", " \-\-east=\c
+.I easting-coordinate
+The easting coordinate in the format corresponding to the subcommand.
+.TP
+.BR \-n ", " \-\-north=\c
+.I northing-coordinate
+The northing coordinate in the format corresponding to the subcommand.
+.
+.SH BUGS
+I should think so.
+.LP
+Please refer to
+.UR https://\:github\:.com/\:tifrueh/\:lv95-converter/\:issues/
+.UE .
+.
+.SH EXAMPLES
+Display the help message:
+.IP
+.EX
+lv95-converter -h
+.EE
+.P
+Display the help message for the lv95 subcommand:
+.IP
+.EX
+lv95-converter lv95 -h
+.EE
+.P
+Convert the LV95 coordinates 2600000 1200000 to WGS84:
+.IP
+.EX
+lv95-converter lv95 -e 2600000 -n 1200000
+.EE
+.
+.SH SEE ALSO
+Formulas and constants for the calculation of the Swiss conformal cylindrical
+projection and for the transformation between coordinate systems:
+.UR https://www.swisstopo.admin.ch/dam/en/sd-web/c46Fz-MHIc3u/refsys-EN.pdf
+.UE

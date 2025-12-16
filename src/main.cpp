@@ -1,68 +1,69 @@
-// Convert LV95 coordinates to WGS84 and vice-versa
-// Copyright (C) 2022-2024 Timo Früh
+/*
+ * lv95-converter - Convert LV95 coordinates to WGS84 and vice-versa
+ *
+ * Copyright (C) 2022-2025 Timo Früh
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ */
 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-#include <iostream>
 #include <CLI/CLI.hpp>
 #include "config.hpp"
 #include "coord-conv.hpp"
 
 int main(int argc, char** argv) {
 
-	// initialise CLI11 parser
-	CLI::App app{"Convert LV95 coordinates to WGS84 and vice-versa"};
+    // Initialise CLI11 parser.
+    CLI::App app{"Convert LV95 coordinates to WGS84 and vice-versa"};
 
-	app.set_version_flag("-v,--version", VVERSION_STR, "Print version and exit");
+    app.set_version_flag("-v,--version", VVERSION_STR, "Print version and exit");
 
-	// add required ubcommands lv95 and wgs84
-	CLI::App* lv95_scmd = app.add_subcommand("lv95", "convert LV95 to WGS84");
-	CLI::App* wgs84_scmd = app.add_subcommand("wgs84", "convert WGS84 to LV95");
-	app.require_subcommand(1, 1);
-	
-	// add required CLI options -e and -n for lv95
-	coord::lv95 lv95_input;
-	lv95_scmd->add_option<double>("-e,--east", lv95_input.e, "Easting coordinate in LV95")->required();
-	lv95_scmd->add_option<double>("-n,--north", lv95_input.n, "Northing coordinate in LV95")->required();
+    // Add flags for machine readable output.
+    bool mro = false;
+    app.add_flag("-j,--json", mro, "Produce JSON output");
 
-	// add required CLI options -e and -n for wgs84
-	coord::wgs84 wgs84_input;
-	wgs84_scmd->add_option<double>("-e,--east", wgs84_input.e, "Easting coordinate in WGS84")->required();
-	wgs84_scmd->add_option<double>("-n,--north", wgs84_input.n, "Northing coordinate in WGS84")->required();
+    // Add required ubcommands lv95 and wgs84.
+    CLI::App* lv95_scmd = app.add_subcommand("lv95", "Convert LV95 to WGS84");
+    CLI::App* wgs84_scmd = app.add_subcommand("wgs84", "Convert WGS84 to LV95");
+    app.require_subcommand(1, 1);
 
-	// parse CLI arguments
-	CLI11_PARSE(app, argc, argv);
+    // Add required CLI options -e and -n for lv95.
+    coord::coordinates lv95_input;
+    lv95_input.f = coord::LV95;
+    lv95_scmd->add_option<double>("-e,--east", lv95_input.e, "Easting coordinate in LV95")->required();
+    lv95_scmd->add_option<double>("-n,--north", lv95_input.n, "Northing coordinate in LV95")->required();
 
-	// execute selected subcommand with arguments
-	if (*lv95_scmd) {
+    // Add required CLI options -e and -n for wgs84.
+    coord::coordinates wgs84_input;
+    wgs84_input.f = coord::WGS84;
+    wgs84_scmd->add_option<double>("-e,--east", wgs84_input.e, "Easting coordinate in WGS84")->required();
+    wgs84_scmd->add_option<double>("-n,--north", wgs84_input.n, "Northing coordinate in WGS84")->required();
 
-		// convert lv95 to wgs84
-		coord::wgs84 output;
-		output = coord::lv95ToWgs84(lv95_input);
+    // Parse CLI arguments.
+    CLI11_PARSE(app, argc, argv);
 
-		// print out result
-		std::cout << "\nCoordinates in WGS84: N " << output.n << ", E " << output.e << "\n";
+    // Execute selected subcommand with arguments.
+    coord::coordinates output;
+    if (*lv95_scmd) {
+        // Convert lv95 to wgs84.
+        output = coord::lv95ToWgs84(lv95_input);
+    } else {
+        // Convert wgs84 to lv95.
+        output = coord::wgs84ToLv95(wgs84_input);
+    }
 
-	} else {
+    coord::print(output, mro);
 
-		// convert wgs84 to lv95
-		coord::lv95 output;
-		output = coord::wgs84ToLv95(wgs84_input);
-
-		// print out result
-		std::cout << "\nCoordinates in LV95: E " << output.e << ", N " << output.n << "\n";
-	}
-
-	return 0;
+    return 0;
 }
