@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
 
     // Add flags for machine readable output.
     bool mro = false;
-    app.add_flag("-m,--mro", mro, "Produce machine readable output");
+    app.add_flag("-j,--json", mro, "Produce JSON output");
 
     // Add required ubcommands lv95 and wgs84.
     CLI::App* lv95_scmd = app.add_subcommand("lv95", "Convert LV95 to WGS84");
